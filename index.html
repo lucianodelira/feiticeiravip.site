@@ -1,1 +1,107 @@
-<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Feiticeira VIP</title><link rel="icon" href="https://www.feiticeiravip.site/favicon.ico"><style>body{margin:0;font-family:sans-serif;background:#000;color:#fff;text-align:center}iframe{width:100vw;height:100vh;border:none}#installPrompt{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#111;color:#fff;padding:10px 20px;border-radius:8px;z-index:999;display:none}#installPrompt button{background:#e91e63;color:#fff;border:none;padding:10px 15px;margin-left:10px;border-radius:5px;cursor:pointer}@media(max-width:600px){#installPrompt{flex-direction:column;text-align:center}#installPrompt button{margin:10px auto 0}}.hidden{display:none}</style></head><body><iframe src="https://feiticeiravip.site" title="Feiticeira VIP" loading="lazy"></iframe><noscript><p style="color:white">Seu navegador não suporta iframes ou o JavaScript está desativado. Acesse diretamente: <a href="https://feiticeiravip.site" target="_blank" rel="noopener noreferrer" style="color:#e91e63">https://feiticeiravip.site</a></p></noscript><div id="installPrompt" role="dialog" aria-label="Instalar aplicativo"><span>Deseja instalar nosso app?</span><button id="installBtn" aria-label="Instalar App">Instalar</button></div><script>const domain="feiticeiravip.site";let deferredPrompt;if(location.hostname.replace("www.","")!==domain){location.href="https://"+domain}window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredPrompt=e;if(!localStorage.getItem("appInstalled")){document.getElementById("installPrompt").style.display="flex"}});document.getElementById("installBtn").addEventListener("click",async()=>{if(deferredPrompt){deferredPrompt.prompt();const{outcome}=await deferredPrompt.userChoice;if(outcome==="accepted"){localStorage.setItem("appInstalled","true");document.getElementById("installPrompt").classList.add("hidden")}}});</script></body></html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feiticeira VIP</title>
+  <link rel="icon" href="https://www.feiticeiravip.site/favicon.ico" />
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: #000;
+      color: #fff;
+      text-align: center;
+    }
+
+    iframe {
+      width: 100vw;
+      height: 100vh;
+      border: none;
+    }
+
+    #installPrompt {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #111;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 8px;
+      z-index: 999;
+      display: none;
+    }
+
+    #installPrompt button {
+      background: #e91e63;
+      color: #fff;
+      border: none;
+      padding: 10px 15px;
+      margin-left: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 600px) {
+      #installPrompt {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      #installPrompt button {
+        margin: 10px auto 0;
+      }
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <iframe src="https://feiticeiravip.site" title="Feiticeira VIP" loading="lazy"></iframe>
+  <noscript>
+    <p style="color:white">
+      Seu navegador não suporta iframes ou o JavaScript está desativado. Acesse diretamente:
+      <a href="https://feiticeiravip.site" target="_blank" rel="noopener noreferrer" style="color:#e91e63">
+        https://feiticeiravip.site
+      </a>
+    </p>
+  </noscript>
+
+  <div id="installPrompt" role="dialog" aria-label="Instalar aplicativo">
+    <span>Deseja instalar nosso app?</span>
+    <button id="installBtn" aria-label="Instalar App">Instalar</button>
+  </div>
+
+  <script>
+    const domain = "feiticeiravip.site";
+
+    if (location.hostname.replace("www.", "") !== domain) {
+      location.href = "https://" + domain;
+    }
+
+    let deferredPrompt;
+
+    window.addEventListener("beforeinstallprompt", (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      if (!localStorage.getItem("appInstalled")) {
+        document.getElementById("installPrompt").style.display = "flex";
+      }
+    });
+
+    document.getElementById("installBtn").addEventListener("click", async () => {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        const { outcome } = await deferredPrompt.userChoice;
+        if (outcome === "accepted") {
+          localStorage.setItem("appInstalled", "true");
+          document.getElementById("installPrompt").classList.add("hidden");
+        }
+      }
+    });
+  </script>
+</body>
+</html>
